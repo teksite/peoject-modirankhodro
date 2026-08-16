@@ -39,7 +39,6 @@ export default function Footer() {
                 <span className="block text-center text-xs font-semibold text-white mt-6">
                     {copyWriteBrand}
                 </span>
-
             </div>
         </footer>
     );

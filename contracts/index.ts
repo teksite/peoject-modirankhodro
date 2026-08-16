@@ -1,4 +1,5 @@
 import {LucideIcon} from "lucide-react";
+import {Icon} from "next/dist/lib/metadata/types/metadata-types";
 
 export interface FooterNavItemType {
     id: string
@@ -18,7 +19,6 @@ export interface FooterSocialNavIType {
     href: string,
     icon?: LucideIcon,
 }
-
 
 
 export interface HeaderNavItemProps {
@@ -41,4 +41,14 @@ export interface MagazineItemType {
     title: string
     href: string
     image: string
+}
+
+
+export interface ServicesType {
+    id: string;
+    icon: LucideIcon;
+    title: string;
+    description: string;
+    color: string;
+    href: string;
 }
