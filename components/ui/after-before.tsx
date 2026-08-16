@@ -1,8 +1,15 @@
-'use client'
+'use client';
 
-import React, { useRef, useState, useCallback, useEffect } from "react";
-import { ChevronsLeftRight } from "lucide-react";
-import Image from "next/image";
+import React, {
+    useRef,
+    useState,
+    useCallback,
+    useEffect,
+    type PointerEvent,
+    type KeyboardEvent,
+} from 'react';
+import { ChevronsLeftRight } from 'lucide-react';
+import Image from 'next/image';
 
 interface BeforeAfterSliderProps {
     beforeImage: string;
@@ -12,102 +19,169 @@ interface BeforeAfterSliderProps {
     initial?: number;
     className?: string;
 }
+
 export default function BeforeAfterSlider({
                                               beforeImage,
                                               afterImage,
-                                              beforeLabel = "قبل",
-                                              afterLabel = "بعد",
+                                              beforeLabel = 'قبل',
+                                              afterLabel = 'بعد',
                                               initial = 50,
-                                              className = "",
-                                          }:BeforeAfterSliderProps) {
-    const containerRef = useRef(null);
+                                              className = '',
+                                          }: BeforeAfterSliderProps) {
+
+    const containerRef = useRef<HTMLDivElement | null>(null);
     const draggingRef = useRef(false);
-    const [pos, setPos] = useState(initial); // 0 -> 100 (%)
+
+    const [pos, setPos] = useState(() =>
+        Math.min(100, Math.max(0, initial))
+    );
+
     const [containerWidth, setContainerWidth] = useState(0);
 
+    /*
+     * Get container width
+     */
     useEffect(() => {
-        const el = containerRef.current;
-        if (!el) return;
-        const update = () => setContainerWidth(el.offsetWidth);
-        update();
-        const ro = new ResizeObserver(update);
-        ro.observe(el);
-        return () => ro.disconnect();
+        const element = containerRef.current;
+
+        if (!element) {
+            return;
+        }
+
+        const updateWidth = () => {
+            setContainerWidth(element.offsetWidth);
+        };
+
+        updateWidth();
+
+        const resizeObserver = new ResizeObserver(updateWidth);
+
+        resizeObserver.observe(element);
+
+        return () => {
+            resizeObserver.disconnect();
+        };
     }, []);
 
+
     const updateFromClientX = useCallback((clientX: number) => {
-        const el = containerRef.current;
-        if (!el) return;
-        const rect = el.getBoundingClientRect();
-        const ratio = ((clientX - rect.left) / rect.width) * 100;
+        const element = containerRef.current;
+
+        if (!element) {
+            return;
+        }
+
+        const rect = element.getBoundingClientRect();
+
+        const distanceFromRight = rect.right - clientX;
+
+        const ratio = (distanceFromRight / rect.width) * 100;
+
         setPos(Math.min(100, Math.max(0, ratio)));
     }, []);
 
-    const onPointerDown = (e) => {
+
+    const onPointerDown = (
+        event: PointerEvent<HTMLDivElement>
+    ) => {
         draggingRef.current = true;
-        e.currentTarget.setPointerCapture?.(e.pointerId);
-        updateFromClientX(e.clientX);
+
+        event.currentTarget.setPointerCapture?.(event.pointerId);
+
+        updateFromClientX(event.clientX);
     };
 
-    const onPointerMove = (e: { clientX: number; }) => {
+
+    const onPointerMove = (event: PointerEvent<HTMLDivElement>) => {
         if (!draggingRef.current) return;
-        updateFromClientX(e.clientX);
+
+        updateFromClientX(event.clientX);
     };
 
-    const stopDragging = () => {
-        draggingRef.current = false;
+
+    const stopDragging = () => {draggingRef.current = false;};
+
+
+    const onKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+
+        if (event.key === 'ArrowLeft') {
+            setPos((current) =>
+                Math.min(100, current + 3)
+            );
+        }
+
+        if (event.key === 'ArrowRight') {
+            setPos((current) =>
+                Math.max(0, current - 3)
+            );
+        }
     };
 
-    // Keyboard accessibility (left/right arrow keys move the handle)
-    const onKeyDown = (e) => {
-        if (e.key === "ArrowLeft") setPos((p) => Math.max(0, p - 3));
-        if (e.key === "ArrowRight") setPos((p) => Math.min(100, p + 3));
-    };
 
-    // Fallback: also listen on window while dragging, in case pointer leaves the element fast
     useEffect(() => {
-        const move = (e) => {
-            if (!draggingRef.current) return;
-            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+
+        const move = (event: MouseEvent | TouchEvent) => {
+
+            if (!draggingRef.current) {
+                return;
+            }
+
+            const clientX ='touches' in event
+                    ? event.touches[0]?.clientX
+                    : event.clientX;
+
+            if (clientX === undefined) return;
+
             updateFromClientX(clientX);
         };
-        const up = () => stopDragging();
-        window.addEventListener("mousemove", move);
-        window.addEventListener("mouseup", up);
-        window.addEventListener("touchmove", move);
-        window.addEventListener("touchend", up);
-        return () => {
-            window.removeEventListener("mousemove", move);
-            window.removeEventListener("mouseup", up);
-            window.removeEventListener("touchmove", move);
-            window.removeEventListener("touchend", up);
+
+        const up = () => {
+            draggingRef.current = false;
         };
+
+        window.addEventListener('mousemove', move);
+        window.addEventListener('mouseup', up);
+
+        window.addEventListener('touchmove', move);
+        window.addEventListener('touchend', up);
+
+        return () => {
+            window.removeEventListener('mousemove', move);
+            window.removeEventListener('mouseup', up);
+
+            window.removeEventListener('touchmove', move);
+            window.removeEventListener('touchend', up);
+        };
+
     }, [updateFromClientX]);
 
     return (
         <div
             ref={containerRef}
-            className={`relative w-full select-none overflow-hidden ${className}`}
-            style={{ aspectRatio: "9 / 4", touchAction: "pan-y" }}
+            className={` relative w-full select-none overflow-hidden ${className} `}
+            style={{aspectRatio: '9 / 4', touchAction: 'pan-y',}}
             onPointerDown={onPointerDown}
             onPointerMove={onPointerMove}
             onPointerUp={stopDragging}
             onPointerLeave={stopDragging}
         >
-            {/* Base layer: BEFORE image, fills the whole box */}
+
+            {/* Before Image */}
             <Image
                 src={beforeImage}
                 alt={beforeLabel}
                 draggable={false}
                 width={600}
                 height={300}
-                className="absolute inset-0 h-full w-full object-cover pointer-events-none"
+                className={"absolute inset-0 h-full w-full object-cover pointer-events-none"}
             />
 
-            {/* Top layer: AFTER image, clipped to the handle position */}
+            {/* After Image */}
             <div
-                className="absolute inset-0 h-full overflow-hidden pointer-events-none"
-                style={{ width: `${pos}%` }}
+                className={"absolute inset-y-0 right-0 overflow-hidden pointer-events-none"}
+                style={{
+                    width: `${pos}%`,
+                }}
             >
                 <Image
                     src={afterImage}
@@ -115,32 +189,26 @@ export default function BeforeAfterSlider({
                     draggable={false}
                     width={600}
                     height={300}
-                    className="h-full object-cover pointer-events-none"
-                    style={{
-                        width: containerWidth || "100%",
-                        maxWidth: "none",
-                    }}
+                    className={" h-full object-cover pointer-events-none "}
+                    style={{width: containerWidth || '100%', maxWidth: 'none',}}
                 />
             </div>
 
-            {/* Labels */}
-            <span className="absolute top-3 right-3 rounded-full bg-black/60 px-3 py-1 text-xs font-bold text-white">
-        {beforeLabel}
-      </span>
+            {/* Before Label */}
+            <span className={" absolute top-3 right-3 rounded-full bg-black/60 px-3 py-1 text-xs font-bold text-white "}>
+                {beforeLabel}
+            </span>
+
+            {/* After Label */}
             <span
-                className="absolute top-3 rounded-full bg-black/60 px-3 py-1 text-xs font-bold text-white pointer-events-none transition-opacity"
-                style={{ right: 12, opacity: pos > 14 ? 1 : 0 }}
-            >
-        {afterLabel}
-      </span>
+                className={" absolute top-3 left-3 rounded-full bg-black/60 px-3 py-1 text-xs font-bold text-white pointer-events-none transition-opacity "}
+                style={{opacity: pos > 14 ? 1 : 0,}}>
+                {afterLabel}
+            </span>
 
-            {/* Divider line */}
-            <div
-                className="absolute top-0 bottom-0 w-0.5 bg-white/90 pointer-events-none"
-                style={{ right: `${pos}%`, transform: "translateX(-50%)" }}
-            />
+            <div className={" absolute top-0 bottom-0 w-0.5 bg-white/90 pointer-events-none "}
+                style={{right: `${pos}%`, transform: 'translateX(50%)',}}/>
 
-            {/* Drag handle */}
             <div
                 role="slider"
                 tabIndex={0}
@@ -150,11 +218,11 @@ export default function BeforeAfterSlider({
                 aria-label="مقایسه قبل و بعد"
                 onKeyDown={onKeyDown}
                 onPointerDown={onPointerDown}
-                className="absolute top-1/2 flex h-10 w-10 -translate-y-1/2 translate-x-1/2 cursor-ew-resize items-center justify-center rounded-full bg-white shadow-xl ring-2 ring-white/70 focus:outline-none focus:ring-red-500"
-                style={{ right: `${pos}%` }}
-            >
-                <ChevronsLeftRight size={18} className="text-neutral-800" />
+                className={" absolute top-1/2 flex h-10 w-10  -translate-y-1/2 translate-x-1/2 cursor-ew-resize items-center justify-center rounded-full bg-white shadow-xl ring-2 ring-white/70 focus:outline-none focus:ring-red-500"}
+                style={{right: `${pos}%`,}}>
+                <ChevronsLeftRight size={18} className="text-neutral-800"/>
             </div>
+
         </div>
     );
 }
