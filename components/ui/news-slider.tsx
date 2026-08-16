@@ -57,7 +57,6 @@ export default function NewsSlider({items}: NewsSliderProps) {
 
                                 <article className={'glass-card rounded-2xl overflow-hidden group cursor-pointer h-full'}>
                                     <Image src={item.image} alt={item.title} width={600} height={400} className={"w-full h-full object-cover"} loading="lazy" fetchPriority={'low'}/>
-
                                     <div className="p-6">
                                         <div className={'flex items-center gap-6 mb-3'}>
                                             {tag && (
