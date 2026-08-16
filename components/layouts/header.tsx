@@ -1,59 +1,227 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const navLinks = [
-    { label: "XTRIM", href: "#" },
-    { label: "NEV", href: "#" },
-    { label: "FOWNIX", href: "#" },
-    { label: "MVM", href: "#" },
+
+interface NavItemProps {
+    id: string
+    title: string
+    href: string
+    children: NavSubItemProps[]
+}
+
+
+interface NavSubItemProps {
+    id: string;
+    title: string,
+    href: string,
+    image?: string
+}
+
+const nav1: NavItemProps[] = [
+    {
+        id: "nav_item_r_1",
+        title: "جایگزینی پریمیوم",
+        href: "#",
+        children: [
+            {
+                id: "nav_item_r_1_1",
+                title: "خدمات جایگزینی",
+                href: "/replacement/",
+                image: "/assets/images/nav/ICON-mwno-new-up-۵۷.svg",
+            },
+            {
+                id: "nav_item_r_1_2",
+                title: "نمایشگاه آنلاین",
+                href: "#",
+                image: "/assets/images/nav/icon-new-menu-4.svg",
+            },
+        ],
+    },
+
+    {
+        id: "nav_item_r_2",
+        title: "فروش",
+        href: "#",
+        children: [
+            {
+                id: "nav_item_r_2_1",
+                title: "شرایط فروش",
+                href: "/sell/",
+                image: "/assets/images/nav/icon-new-menu-1.svg",
+            },
+            {
+                id: "nav_item_r_2_2",
+                title: "چی بخرم!",
+                href: "/car-finder/",
+                image: "/assets/images/nav/icon-new-menu-2.svg",
+            },
+            {
+                id: "nav_item_r_2_3",
+                title: "محاسبه گر اقساط",
+                href: "/installment-calculator/",
+                image: "/assets/images/nav/icon-new-menu-3.svg",
+            },
+            {
+                id: "nav_item_r_2_4",
+                title: "فروش سازمانی",
+                href: "/organizational-sales/",
+                image: "/assets/images/nav/ICON-SAZMANI-new.svg",
+            },
+            {
+                id: "nav_item_r_2_5",
+                title: "مقایسه خودرو",
+                href: "/compare/",
+                image: "/assets/images/nav/ICON-moghayese-21-1.svg",
+            },
+        ],
+    },
 ];
+const nav2: NavItemProps[] = [
+    {
+        id: "nav_item_m_1",
+        title: "جایگزینی پریمیوم",
+        href: "#",
+        children: [
+            {
+                id: "nav_item_m_1_1",
+                title: "خدمات جایگزینی",
+                href: "/replacement/",
+                image: "/assets/images/nav/ICON-mwno-new-up-۵۷.svg",
+            },
+            {
+                id: "nav_item_m_1_2",
+                title: "نمایشگاه آنلاین",
+                href: "#",
+                image: "/assets/images/nav/icon-new-menu-4.svg",
+            },
+        ],
+    },
 
+    {
+        id: "nav_item_m_2",
+        title: "فروش",
+        href: "#",
+        children: [
+            {
+                id: "nav_item_m_2_1",
+                title: "شرایط فروش",
+                href: "/sell/",
+                image: "/assets/images/nav/icon-new-menu-1.svg",
+            },
+            {
+                id: "nav_item_m_2_2",
+                title: "چی بخرم!",
+                href: "/car-finder/",
+                image: "/assets/images/nav/icon-new-menu-2.svg",
+            },
+            {
+                id: "nav_item_m_2_3",
+                title: "محاسبه گر اقساط",
+                href: "/installment-calculator/",
+                image: "/assets/images/nav/icon-new-menu-3.svg",
+            },
+            {
+                id: "nav_item_m_2_4",
+                title: "فروش سازمانی",
+                href: "/organizational-sales/",
+                image: "/assets/images/nav/ICON-SAZMANI-new.svg",
+            },
+            {
+                id: "nav_item_m_2_5",
+                title: "مقایسه خودرو",
+                href: "/compare/",
+                image: "/assets/images/nav/ICON-moghayese-21-1.svg",
+            },
+        ],
+    },
+];
+const nav3: NavItemProps[] = [
+    {
+        id: "nav_item_l_3",
+        title: "خدمات پس از فروش",
+        href: "#",
+        children: [
+            {
+                id: "nav_item_l_3_1",
+                title: "خدمات VIP",
+                href: "/vip-service/",
+                image: "/assets/images/nav/ICON-mwno-new-up-۵۹.svg",
+            },
+            {
+                id: "nav_item_l_3_2",
+                title: "خدمات آموزشی",
+                href: "/educational-services/",
+                image: "/assets/images/nav/ICON-mwno-new-up-۵۸.svg",
+            },
+        ],
+    },
+    {
+        id: "nav_item_l_4",
+        title: "تماس با ما",
+        href: "/contact-us/",
+        children: [
+            {
+                id: "nav_item_l_4_1",
+                title: "تماس با ما",
+                href: "/contact-us/",
+                image: "/assets/images/nav/ICON-contact-us-2.svg",
+            },
+            {
+                id: "nav_item_l_4_2",
+                title: "شعب و کارشوهای استان تهران",
+                href: "/dealerships/tehran/",
+                image: "/assets/images/nav/ICON-contact-us.svg",
+            },
+            {
+                id: "nav_item_l_4_3",
+                title: "شعب و کارشوهای استان البرز",
+                href: "/dealerships/karaj/",
+                image: "/assets/images/nav/ICON-contact-us-1.svg",
+            },
+            {
+                id: "nav_item_l_4_4",
+                title: "نمایندگی‌های مدیران خودرو ایران",
+                href: "/dealerships/",
+                image: "/assets/images/nav/all-dealerships-modiran-111.svg",
+            },
+        ],
+    },
+];
 export default function Header() {
+    const appName = process.env.APP_NAME ?? "میدیران خوردو ۷۷۷";
     return (
-        <header className="bg-ink2 text-white">
-            <div className="mx-auto max-w-[1400px] px-4 md:px-8 h-16 flex items-center justify-between gap-6">
-                <div className="hidden lg:flex items-center gap-6 text-sm text-white/70 order-3">
-                    <button className="hover:text-white transition-colors focus-ring flex items-center gap-2">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                            <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="2" />
-                            <path d="M20 20l-3.5-3.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                        </svg>
-                    </button>
-                    <Link href="#contact" className="hover:text-white transition-colors focus-ring">
-                        تماس با ما
-                    </Link>
-                    <Link href="#" className="hover:text-white transition-colors focus-ring">
-                        خدمات پس از فروش
-                    </Link>
-                </div>
+        <header className="my-2 relative">
+            <div className="mx-auto container h-full flex items-center bg-slate-600/50 backdrop-blur-2xl py-4 px-3 rounded-2xl z-10">
+                <Image src={'/assets/images/logo.webp'} alt={appName} width={70} height={50} loading={"eager"} fetchPriority={'high'}/>
 
-                {/* center: primary nav */}
-                <nav className="hidden lg:flex items-center gap-7 text-sm font-medium order-2">
-                    {navLinks.map((l) => (
-                        <Link
-                            key={l.label}
-                            href={l.href}
-                            className="text-white/85 hover:text-white transition-colors focus-ring tracking-wide"
-                        >
-                            {l.label}
-                        </Link>
+                <div className="flex items-center justify-between gap-6 w-full">
+                    {[nav1, nav2, nav3].map((navItem: NavItemProps[], i) => (
+                        <nav key={i}>
+                            <ul className={'flex items-center justify-center gap-3 w-full'}>
+                                {navItem.map((item: NavItemProps) => (
+                                    <li key={item.id} className={'group '}>
+                                        <span className={'font-bold text-white'}>{item.title}</span>
+                                        <div className={'bg-slate-600/50 backdrop-blur-2xl mx-auto invisible group-hover:z-30 group-hover:visible translate-y-full opacity-0 -bottom-1/4 group-hover:bottom-0 group-hover:opacity-100 transition-all duration-75 ease-in grid md:grid-cols-4 absolute inset-x-0 w-full  rounded-2xl border border-slate-300 p-6'}>
+                                            {item.children.map((nav: NavSubItemProps) =>
+                                                <NavItem {...nav} key={nav.id} id={nav.id}/>)}
+                                        </div>
+                                    </li>
+                                ))}
+                            </ul>
+                        </nav>
                     ))}
-                </nav>
-
-                {/* left cluster: logo + CTA */}
-                <div className="flex items-center gap-4 order-1 lg:order-3 mr-auto lg:mr-0">
-                    <Link href="#sales" className="hidden md:inline text-sm text-white/85 hover:text-white transition-colors">
-                        فروش
-                    </Link>
-                    <span className="hidden md:inline text-xs bg-white/10 text-white/70 px-3 py-1.5 rounded-full">
-            جایگزینی پریمیوم
-          </span>
-                    <Link href="/"
-                        className="flex items-center gap-1 font-num font-bold text-2xl tracking-tight text-crimson" >
-                        <span>۷۷۷</span>
-                    </Link>
                 </div>
             </div>
         </header>
+    );
+}
+
+export function NavItem({title, href, image}: NavSubItemProps) {
+    return (
+        <Link href={href} className={'flex items-center justify-center gap-3 flex-col'}>
+            {image &&
+                <Image src={image} alt={title} width={100} height={100} loading={"lazy"} fetchPriority={'low'} className={'mx-auto aspect-square'}/>}
+            <span className={'text-white font-bold'}>{title}</span>
+        </Link>
     );
 }
