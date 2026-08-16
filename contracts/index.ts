@@ -51,4 +51,5 @@ export interface ServicesType {
     description: string;
     color: string;
     href: string;
+    image:string
 }
