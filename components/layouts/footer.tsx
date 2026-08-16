@@ -1,7 +1,7 @@
 import {ChevronLeft} from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import {FooterGroupItems, FooterSocialNavItems, FormDescription} from "@/mocks";
+import {CopyWrite, FooterGroupItems, FooterSocialNavItems, FormDescription} from "@/mocks";
 import {FooterColItemType, FooterNavItemType, FooterSocialNavIType} from "@/contracts";
 
 
@@ -31,6 +31,9 @@ export default function Footer() {
                     </ul>
                 </nav>
                 <Image src={'/assets/images/layouts/backligh-footer.webp'} className={'mx-auto mix-blend-screen'} alt={'footer image'} width={1920} height={490} fetchPriority={'low'} loading={'lazy'}/>
+                <p className={'text-xs font-semibold text-white text-center'}>
+                    {CopyWrite}
+                </p>
             </div>
         </footer>
     );

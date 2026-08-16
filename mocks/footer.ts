@@ -1,6 +1,7 @@
 import {FooterColItemType, FooterSocialNavIType} from "@/contracts";
 
 export const FormDescription = 'با توجه به محدودیت ظرفیت ثبت نام فرم را پر کنید تا کارشناسان ما جهت ثبت نام قطعی باشما ارتباط برقرار کنند.'
+export const CopyWrite = 'تمام حقوق مادی و معنوی محتوای این وب سایت برای شرکت ایرانیان خودرو محفوظ می باشد.'
 
 export const FooterGroupItems: FooterColItemType[] = [
     {
