@@ -9,10 +9,10 @@ import BeforeAfterSlider from "@/components/ui/after-before";
 export default function homePage() {
     return (
         <main>
-            <section className="container mx-auto py-24">
+            <section className="container mx-auto my-24">
                 <ServiceSection/>
             </section>
-            <section className="container mx-auto py-24">
+            <section className="container mx-auto my-24">
                 <ReplacementSection />
                 <div className={'mx-auto w-100 md:w-150 lg:w-225'}>
                     <BeforeAfterSlider
@@ -22,7 +22,7 @@ export default function homePage() {
                 </div>
             </section>
 
-            <section className={'container mx-auto py-24'}>
+            <section className={'container mx-auto my-24'}>
                 <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-12">
                     <div className="inline-flex items-center gap-3">
                         <Newspaper className="size-6"/>
