@@ -5,7 +5,7 @@ import {HeaderNavGroups} from "@/mocks";
 
 
 export default function Header() {
-    const appName = process.env.APP_NAME ?? "میدیران خوردو ۷۷۷";
+    const appName :string = process.env.APP_NAME ?? "میدیران خوردو ۷۷۷";
     return (
         <header className="my-2 relative">
             <div className="mx-auto container h-full flex items-center bg-slate-600/50 backdrop-blur-2xl py-4 px-6 rounded-2xl z-10">

@@ -6,14 +6,16 @@ import {FooterColItemType, FooterNavItemType, FooterSocialNavIType} from "@/cont
 
 
 export default function Footer() {
+    const copyWriteBrand :string = process.env.APP_COPYWRITE ?? "© ایرانیان خودرو 1405";
     return (
-        <footer className={'bg-black py-12 px-6'}>
+
+    <footer className={'bg-black py-12 px-6'}>
             <div className={'container mx-auto '}>
                 <div className={'grid gap-12 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5'}>
                     {
                         FooterGroupItems.map((col: FooterColItemType, i) => <FooterColumn column={col} key={i}/>)
                     }
-                    <section className={'border border-red-900 p-6 rounded-xl'}>
+                    <section className={'border border-red-900 p-6 rounded-xl md:col-span-2 lg:col-span-4 xl:col-span-1'}>
                         <p className={'text-sm text-white font-semibold leading-9 text-justify'}>
                             {FormDescription}
                         </p>
@@ -34,6 +36,10 @@ export default function Footer() {
                 <p className={'text-xs font-semibold text-white text-center'}>
                     {CopyWrite}
                 </p>
+                <span className="block text-center text-xs font-semibold text-white mt-6">
+                    {copyWriteBrand}
+                </span>
+
             </div>
         </footer>
     );
@@ -44,15 +50,16 @@ export default function Footer() {
 function FooterColumn({column}: { column: FooterColItemType }) {
     return (
         <section className={'text-white'}>
-            <div className={'flex items-center justify-start gap-1 mb-6'}>
+            <div className={'flex items-center justify-start gap-1 '}>
                 <span className={' font-bold '}>{column.title}</span>
                 <ChevronLeft className={'text-current size-5'}/>
             </div>
-            <ul className={'space-y-3'}>
+            <hr className={'my-3 border-slate-600 w-3/4'}/>
+            <ul className={'space-y-3 text-sm'}>
                 {
                     column.children.map((itm: FooterNavItemType) => (
                         <li key={column.id + '_' + itm.id}>
-                            <Link href={'#'}>
+                            <Link href={'#'} className={'hover:text-red-900'}>
                                 {itm.title}
                             </Link>
                         </li>

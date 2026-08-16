@@ -35,3 +35,10 @@ export interface HeaderNavSubItemProps {
     href: string,
     image?: string
 }
+
+export interface MagazineItemType {
+    id: string
+    title: string
+    href: string
+    image: string
+}
