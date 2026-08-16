@@ -18,3 +18,20 @@ export interface FooterSocialNavIType {
     href: string,
     icon?: LucideIcon,
 }
+
+
+
+export interface HeaderNavItemProps {
+    id: string
+    title: string
+    href: string
+    children: HeaderNavSubItemProps[]
+}
+
+
+export interface HeaderNavSubItemProps {
+    id: string;
+    title: string,
+    href: string,
+    image?: string
+}
