@@ -1,5 +1,6 @@
 import {LucideIcon} from "lucide-react";
 import {Icon} from "next/dist/lib/metadata/types/metadata-types";
+import {magazineTags} from "@/mocks";
 
 export interface FooterNavItemType {
     id: string
@@ -36,13 +37,31 @@ export interface HeaderNavSubItemProps {
     image?: string
 }
 
+
+
+export type MagazineTagId =
+    | 'tag_discount'
+    | 'tag_news'
+    | 'tag_industry'
+    | 'tag_education'
+    | 'tag_technology';
+
 export interface MagazineItemType {
-    id: string
-    title: string
-    href: string
-    image: string
+    id: string;
+    title: string;
+    href: string;
+    image: string;
+    excerpt: string;
+    date: string;
+    tagId: MagazineTagId;
 }
 
+
+export interface magazineTagsType {
+    id: MagazineTagId;
+    title: string;
+    color: string;
+}
 
 export interface ServicesType {
     id: string;
