@@ -11,7 +11,6 @@ import {
 import {submitConsult} from "@/services/sendApi";
 import {FormikHelpers} from "formik";
 import {useState} from "react";
-import SuccessForm from "@/components/forms/success-form-ui";
 
 export interface RegisterConsultFormDataType {
     name?: string

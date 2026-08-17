@@ -85,13 +85,13 @@ export default function CounterSection() {
             <div className="glass grid grid-cols-3 gap-6 rounded-xl p-6 sm:p-8">
                 {stats.map((s) => (
                     <div key={s.label} className="text-center">
-                        <p className="flex items-center justify-center text-2xl font-black sm:text-3xl">
+                        <div className="flex items-center justify-center text-2xl font-black sm:text-3xl">
                             <Counter
                                 start={s.start}
                                 value={s.value}
                             />
                             {s.prefix}
-                        </p>
+                        </div>
 
                         <p className="mt-1 text-xs text-muted-foreground sm:text-sm">
                             {s.label}
