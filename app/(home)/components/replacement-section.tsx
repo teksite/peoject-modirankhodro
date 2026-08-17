@@ -1,22 +1,8 @@
-import {RefreshCw, CheckCircle2, ArrowLeft, TrendingUp, Shield, Coins} from 'lucide-react';
+import {RefreshCw, CheckCircle2, ArrowLeft} from 'lucide-react';
+import {FeaturesType} from "@/contracts";
+import {featuresList} from "@/mocks";
+import Link from "next/link";
 
-const features = [
-    {
-        icon: TrendingUp,
-        title: 'ارزش‌گذاری منصفانه',
-        description: 'خودروی فعلی شما توسط کارشناسان ما با بالاترین قیمت بازار ارزش‌گذاری می‌شود',
-    },
-    {
-        icon: Coins,
-        title: 'تسویه سریع',
-        description: 'مبلغ خودروی شما کسر شده و مابقی به‌صورت اقساطی یا نقدی تسویه می‌گردد',
-    },
-    {
-        icon: Shield,
-        title: 'تضمین سلامت',
-        description: 'تمام مراحل معاوضه با ضمانت‌نامه رسمی و شفاف انجام می‌شود',
-    },
-];
 
 export default function ReplacementSection() {
 
@@ -31,10 +17,10 @@ export default function ReplacementSection() {
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
                 <div className={`text-center max-w-2xl mx-auto mb-16 transition-all duration-700`}>
-          <span className="inline-flex items-center gap-2 px-4 py-2 glass-red text-red-600 text-sm font-semibold rounded-full mb-4">
-            <RefreshCw className="w-4 h-4"/>
-            طرح جایگزینی
-          </span>
+                    <div className="inline-flex items-center gap-2 px-4 py-2 glass-red text-red-600 text-sm font-semibold rounded-full mb-4">
+                        <RefreshCw className="w-4 h-4"/>
+                        طرح جایگزینی
+                    </div>
                     <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">
                         خودروی خود را <span className="gradient-text">جایگزین</span> کنید
                     </h2>
@@ -44,7 +30,6 @@ export default function ReplacementSection() {
                 </div>
 
                 <div className="grid lg:grid-cols-2 gap-12 items-center">
-                    {/* Left: Process steps */}
                     <div className="space-y-4">
                         {[
                             {
@@ -68,11 +53,9 @@ export default function ReplacementSection() {
                                 desc: 'مبلغ کسر شده و تحویل خودروی جدید در کوتاه‌ترین زمان'
                             },
                         ].map((item, i) => (
-                            <div
-                                key={i}
-                                className={`glass-card rounded-2xl p-6 flex items-start gap-6 transition-all duration-700`}
-                                style={{transitionDelay: `${i * 0.15}s`}}
-                            >
+                            <div key={i}
+                                 className={`glass-card rounded-2xl p-6 flex items-start gap-6 transition-all duration-700`}
+                                 style={{transitionDelay: `${i * 0.15}s`}}>
                                 <div className="shrink-0 w-14 h-14 bg-linear-to-br from-red-500 to-red-700 rounded-2xl flex items-center justify-center text-white font-extrabold text-lg shadow-lg shadow-red-500/30">
                                     {item.step}
                                 </div>
@@ -85,20 +68,19 @@ export default function ReplacementSection() {
                         ))}
                     </div>
 
-                    {/* Right: Features + CTA */}
                     <div className={`transition-all duration-700 delay-300`}>
                         <div className="glass-card rounded-3xl p-8 lg:p-10">
                             <div className="space-y-6 mb-8">
-                                {features.map((f, i) => {
-                                    const Icon = f.icon;
+                                {featuresList.map((feature: FeaturesType, i) => {
+                                    const Icon = feature.icon;
                                     return (
                                         <div key={i} className="flex items-start gap-4">
                                             <div className="shrink-0 w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center group-hover:bg-red-500 transition-colors duration-300">
                                                 <Icon className="w-6 h-6 text-red-600"/>
                                             </div>
                                             <div>
-                                                <h3 className="font-bold text-gray-900 mb-1">{f.title}</h3>
-                                                <p className="text-sm text-gray-600 leading-relaxed">{f.description}</p>
+                                                <h3 className="font-bold text-gray-900 mb-1">{feature.title}</h3>
+                                                <p className="text-sm text-gray-600 leading-relaxed">{feature.description}</p>
                                             </div>
                                         </div>
                                     );
@@ -111,13 +93,10 @@ export default function ReplacementSection() {
                                 </p>
                             </div>
 
-                            <a
-                                href="#consultation"
-                                className="inline-flex items-center gap-3 px-7 py-3.5 bg-linear-to-r from-red-500 to-red-600 text-white font-bold rounded-xl shadow-lg shadow-red-500/30 hover:shadow-red-500/50 hover:scale-105 transition-all duration-300"
-                            >
+                            <Link href="#consultation" className="inline-flex items-center gap-3 px-7 py-3.5 bg-linear-to-r from-red-500 to-red-600 text-white font-bold rounded-xl shadow-lg shadow-red-500/30 hover:shadow-red-500/50 hover:scale-105 transition-all duration-300">
                                 درخواست جایگزینی
                                 <ArrowLeft className="w-5 h-5"/>
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>
