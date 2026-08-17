@@ -1,7 +1,18 @@
 @import "tailwindcss";
 
-
 @layer components {
+    .label_input {
+        @apply text-sm font-medium text-slate-900;
+    }
+
+    .error_message {
+        @apply rounded-sm  bg-red-50  px-2  py-1  text-xs  font-bold  text-red-600;
+    }
+
+    .input {
+        @apply w-full rounded-md bg-white text-slate-900 outline-1 -outline-offset-1 outline-slate-300 transition placeholder:text-slate-400 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-600 disabled:cursor-not-allowed disabled:opacity-60;
+    }
+
     .glass {
         background: rgba(255, 255, 255, 0.55);
         backdrop-filter: blur(20px) saturate(180%);
@@ -33,7 +44,6 @@
     }
 
 
-
     .gradient-text {
         background: linear-gradient(135deg, #E11D2A 0%, #FF6B76 100%);
         -webkit-background-clip: text;
@@ -56,30 +66,51 @@
     .scrollbar-hide::-webkit-scrollbar {
         display: none;
     }
+
     .scrollbar-hide {
         -ms-overflow-style: none;
         scrollbar-width: none;
     }
 
-    .animate-delay-100 { animation-delay: 0.1s; }
-    .animate-delay-200 { animation-delay: 0.2s; }
-    .animate-delay-300 { animation-delay: 0.3s; }
-    .animate-delay-400 { animation-delay: 0.4s; }
-    .animate-delay-500 { animation-delay: 0.5s; }
-    .animate-delay-700 { animation-delay: 0.7s; }
+    .animate-delay-100 {
+        animation-delay: 0.1s;
+    }
+
+    .animate-delay-200 {
+        animation-delay: 0.2s;
+    }
+
+    .animate-delay-300 {
+        animation-delay: 0.3s;
+    }
+
+    .animate-delay-400 {
+        animation-delay: 0.4s;
+    }
+
+    .animate-delay-500 {
+        animation-delay: 0.5s;
+    }
+
+    .animate-delay-700 {
+        animation-delay: 0.7s;
+    }
 }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
     width: 8px;
 }
+
 ::-webkit-scrollbar-track {
     background: #f1f1f1;
 }
+
 ::-webkit-scrollbar-thumb {
     background: #E11D2A;
     border-radius: 4px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
     background: #BE1422;
 }

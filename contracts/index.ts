@@ -1,6 +1,4 @@
 import {LucideIcon} from "lucide-react";
-import {Icon} from "next/dist/lib/metadata/types/metadata-types";
-import {features, magazineTags} from "@/mocks";
 
 export interface FooterNavItemType {
     id: string
@@ -38,7 +36,6 @@ export interface HeaderNavSubItemProps {
 }
 
 
-
 export type MagazineTagId =
     | 'tag_discount'
     | 'tag_news'
@@ -70,7 +67,7 @@ export interface ServicesType {
     description: string;
     color: string;
     href: string;
-    image:string
+    image: string
 }
 
 
@@ -78,4 +75,15 @@ export interface FeaturesType {
     icon: LucideIcon
     title: string
     description: string,
+}
+
+export interface CarListItemType {
+    id: number | string,
+    value: string,
+    label: string,
+}
+export interface PaymentConditionItemType {
+    id: number | string,
+    value: string,
+    label: string,
 }

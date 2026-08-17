@@ -1,12 +1,13 @@
-import {magazinesItems} from "@/mocks";
 import ServiceSection from "@/app/(home)/components/service-section";
-import NewsSlider from "@/components/ui/news-slider";
-import {ArrowLeft, Newspaper} from "lucide-react";
-import Link from "next/link";
+
 import ReplacementSection from "@/app/(home)/components/replacement-section";
 import BeforeAfterSlider from "@/components/ui/after-before";
 import Counter from "@/components/layouts/container";
 import ConsultSection from "@/components/ui/consult-section";
+import {ArrowLeft, Newspaper} from "lucide-react";
+import Link from "next/link";
+import NewsSlider from "@/components/ui/news-slider";
+import {magazinesItems} from "@/mocks";
 
 export default function homePage() {
     return (
@@ -18,15 +19,15 @@ export default function homePage() {
             <Counter>
                 <ReplacementSection/>
                 <div className={'mx-auto w-100 md:w-150 lg:w-225'}>
-                    <BeforeAfterSlider beforeImage="/assets/images/after-before/old.png" afterImage="/assets/images/after-before/new.png"/>
+                    <BeforeAfterSlider beforeImage="/assets/images/after-before/old.png" afterImage="/assets/images/after-before/new.png" />
                 </div>
             </Counter>
 
-            <Counter>
-                <ConsultSection>
 
-                </ConsultSection>
+            <Counter>
+                <ConsultSection />
             </Counter>
+
 
             <Counter>
                 <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-12">
@@ -46,7 +47,7 @@ export default function homePage() {
 
                 </div>
 
-                <NewsSlider items={magazinesItems}/>
+                <NewsSlider items={magazinesItems} />
             </Counter>
         </main>
     );
