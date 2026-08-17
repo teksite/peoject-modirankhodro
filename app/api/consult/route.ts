@@ -4,7 +4,8 @@ export async function POST(request: NextRequest) {
     try {
         const body = await request.json()
         const response = await fetch(
-            'https://my.barsasoft.com/api2/CRMRegistration/0.1/RegisterDemoProject',
+            // 'https://my.barsasoft.com/api2/CRMRegistration/0.1/RegisterDemoProject',
+            'https://barsasoft.com/api/v1/mvm',
             {
                 method: 'POST',
                 headers: {
