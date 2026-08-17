@@ -9,11 +9,16 @@ import Link from "next/link";
 import NewsSlider from "@/components/ui/news-slider";
 import {magazinesItems} from "@/mocks";
 import HeroSlider from "@/app/(home)/components/hero-section";
+import CounterSection from "@/app/(home)/components/counter-section";
 
 export default function homePage() {
     return (
         <main>
             <HeroSlider />
+
+            <Counter>
+                <CounterSection />
+            </Counter>
             <Counter>
                 <ServiceSection/>
             </Counter>
