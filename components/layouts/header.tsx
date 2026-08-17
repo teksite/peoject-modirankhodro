@@ -7,8 +7,7 @@ import { HeaderNavItemProps, HeaderNavSubItemProps } from "@/contracts";
 import { HeaderNavGroups } from "@/mocks";
 
 export default function Header() {
-    const appName: string =
-        process.env.NEXT_PUBLIC_APP_NAME ?? "مدیران خودرو ۷۷۷";
+    const appName: string = process.env.NEXT_PUBLIC_APP_NAME ?? "مدیران خودرو ۷۷۷";
 
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 

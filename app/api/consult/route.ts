@@ -2,6 +2,8 @@ import {NextRequest, NextResponse} from 'next/server'
 
 export async function POST(request: NextRequest) {
     try {
+        const token : string = process.env.TOKEN ?? '';
+
         const body = await request.json()
         const response = await fetch(
             // 'https://my.barsasoft.com/api2/CRMRegistration/0.1/RegisterDemoProject',
@@ -11,6 +13,7 @@ export async function POST(request: NextRequest) {
                 headers: {
                     'Content-Type': 'application/json',
                     'Accept': 'application/json',
+                    'Authorization': token,
                 },
                 body: JSON.stringify(body),
                 cache: 'no-store',
