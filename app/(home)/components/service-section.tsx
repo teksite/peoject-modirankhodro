@@ -11,7 +11,7 @@ export default function ServiceSection() {
                 return <Link
                     key={card.id}
                     href={card.href}
-                    className={"relative overflow-hidden bg-white border border-slate-300 rounded-2xl p-6 group cursor-pointer transition-all duration-700 opacity-100 translate-y-0"}>
+                    className={"relative overflow-hidden bg-white border border-slate-300 rounded-2xl p-6 group cursor-pointer z-10"}>
                     <div
                         className={" absolute inset-0 bg-center bg-cover bg-no-repeat opacity-0 group-hover:opacity-10 transition-opacity duration-500 pointer-events-none "}
                         style={{backgroundImage: `url(${card.image})`,}}/>
@@ -20,16 +20,16 @@ export default function ServiceSection() {
                         <Icon className="w-7 h-7 text-white" strokeWidth={2}/>
                     </div>
 
-                    <h3 className={" text-lg font-bold text-gray-900 mb-2 group-hover:text-brand-600 transition-colors duration-300 "}>
+                    <h3 className={" text-lg font-bold text-gray-900 mb-2 group-hover:text-red-600 transition-colors duration-300 "}>
                         {card.title}
                     </h3>
 
                     <p className={" text-sm text-gray-600 leading-relaxed mb-4 "}>
                         {card.description}
                     </p>
-                    <div className={"flex items-center gap-2 text-sm font-semibold text-brand-600 opacity-0 group-hover:opacity-100 group-hover:gap-3 transition-all duration-300"}>
+                    <div className={"flex items-center gap-2 text-sm font-semibold text-red-600 opacity-0 group-hover:opacity-100 group-hover:gap-3 transition-all duration-300"}>
                         مشاهده
-                        <span className="w-6 h-px bg-brand-500"></span>
+                        <span className="w-6 h-px bg-red-500"></span>
                     </div>
 
                 </Link>;

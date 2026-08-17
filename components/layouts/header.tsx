@@ -7,8 +7,8 @@ import {HeaderNavGroups} from "@/mocks";
 export default function Header() {
     const appName :string = process.env.APP_NAME ?? "میدیران خوردو ۷۷۷";
     return (
-        <header className="my-2 relative">
-            <div className="mx-auto container h-full flex items-center bg-slate-600/50 backdrop-blur-2xl py-4 px-6 rounded-2xl z-10">
+        <header className="my-2 relative z-50">
+            <div className="mx-auto container h-full flex items-center bg-slate-600/90 backdrop-blur-2xl py-4 px-6 rounded-2xl z-10">
                 <Image src={'/assets/images/logo.webp'} alt={appName} width={70} height={50} loading={"eager"} fetchPriority={'high'}/>
 
                 <div className="flex items-center justify-between gap-6 w-full">
@@ -18,7 +18,7 @@ export default function Header() {
                                 {navItem.map((item: HeaderNavItemProps) => (
                                     <li key={item.id} className={'group '}>
                                         <span className={'font-bold text-white'}>{item.title}</span>
-                                        <div className={'bg-slate-600/50 backdrop-blur-2xl mx-auto invisible group-hover:z-30 group-hover:visible translate-y-full opacity-0 -bottom-1/4 group-hover:bottom-0 group-hover:opacity-100 transition-all duration-75 ease-in grid md:grid-cols-4 absolute inset-x-0 w-full  rounded-2xl border border-slate-300 p-6'}>
+                                        <div className={'bg-slate-600/90 backdrop-blur-2xl mx-auto invisible group-hover:z-50 group-hover:visible translate-y-full opacity-0 -bottom-1/4 group-hover:bottom-0 group-hover:opacity-100 transition-all duration-75 ease-in grid md:grid-cols-4 absolute inset-x-0 w-full  rounded-2xl border border-slate-300 p-6'}>
                                             {item.children.map((nav: HeaderNavSubItemProps) =>
                                                 <NavItem {...nav} key={nav.id} id={nav.id}/>)}
                                         </div>
