@@ -17,6 +17,14 @@ export default function homePage() {
             <HeroSlider />
 
             <Counter>
+                <h1 className={'text-center font-bold text-3xl text-red-900 mb-6'}>
+                    خدمات مدیران خودرو ۷۷۷
+                </h1>
+                <p className={'text-gray-600 text-center w-full md:w-3/4 mx-auto leading-9'}>
+                    مدیران خودرو 777 از سال 1396 کار خود را آغاز کرد و به تدریج و با پیگیری برنامه توسعه خود، حالا به عنوان یکی از بهترین نمایندگی‌های چری در جهان و رتبه یک فروش در ایران است. مدیران خودرو 777 دارای 7 شعبه و کارشو فعال در استان تهران و البرز آماده ارائه خدمات به شما همراهان گرامی است.
+                </p>
+            </Counter>
+            <Counter>
                 <CounterSection />
             </Counter>
             <Counter>
