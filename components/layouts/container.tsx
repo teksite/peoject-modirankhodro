@@ -6,7 +6,7 @@ type CounterProps = PropsWithChildren<{
 
 export default function Counter({className, children,}: CounterProps) {
     return (
-        <section className={`container mx-auto my-24" ${className}`}>
+        <section className={`container mx-auto my-24 py-12" ${className}`}>
             {children}
         </section>
     );
