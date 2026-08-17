@@ -10,7 +10,7 @@
     }
 
     .input {
-        @apply w-full rounded-md bg-white text-slate-900 outline-1 -outline-offset-1 outline-slate-300 transition placeholder:text-slate-400 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-600 disabled:cursor-not-allowed disabled:opacity-60;
+        @apply w-full rounded-xl border transition-all duration-300 outline-none text-sm font-medium border-gray-200 bg-white/60 focus:border-red-500 focus:bg-white focus:ring-4 focus:ring-red-500/10;
     }
 
     .glass {

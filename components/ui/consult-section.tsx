@@ -1,5 +1,5 @@
 import {CheckCircle2, LucideIcon} from 'lucide-react';
-import ConsultForm from "@/components/forms/consult";
+import ConsultForm from "@/forms/consult-form";
 
 interface listItemType {
     icon: LucideIcon,
@@ -56,7 +56,7 @@ export default function ConsultationForm() {
 
                     {/* Form side */}
                     <div className="md:col-span-3 p-8 md:p-10">
-                        {<ConsultForm/>}
+                        {<ConsultForm />}
                     </div>
                 </div>
             </div>

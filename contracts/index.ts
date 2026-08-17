@@ -87,3 +87,9 @@ export interface PaymentConditionItemType {
     value: string,
     label: string,
 }
+
+export interface ConsultTimeItemType {
+    id: number | string,
+    value: string,
+    label: string,
+}
